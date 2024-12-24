@@ -12,7 +12,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('permissions.store') }}" method="POST" class="">
+                    <form action="{{ route('roles.store') }}" method="POST" class="">
                         @csrf
                         <div>
                             <label for="" class="text-lg font-medium">Name</label>
@@ -27,8 +27,8 @@
                                 @if ($permissions->isNotEmpty())
                                     @foreach ($permissions as $permission)
                                     <div class="mt-3">
-                                        <input type="checkbox" class="rounded" name="permission[]" id="permission-{{ $permission->id }}" value="{{ $permission->name }}">
-                                        <label for="">{{ $permission->name }}</label>
+                                        <input type="checkbox" class="rounded" name="permission[]" id="permission-{{ $permission->id }}" value="{{ $permission->name }}">  
+                                        <label for="permission-{{ $permission->id }}">{{ $permission->name }}</label>
                                     </div>
                                     @endforeach
                                 @endif
