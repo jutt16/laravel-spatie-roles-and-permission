@@ -13,7 +13,44 @@
 
             <x-message></x-message>
 
-            
+            <table class="w-full">
+                <thead class="bg-gray-50">
+                    <tr class="border-b">
+                        <th class="px-6 py-3 text-left" width="60">#</th>
+                        <th class="px-6 py-3 text-left">Name</th>
+                        <th class="px-6 py-3 text-left">Permissions</th>
+                        <th class="px-6 py-3 text-left" width="180">Created</th>
+                        <th class="px-6 py-3 text-center" width="180">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    @if ($roles -> isNotEmpty())
+                        @foreach ($roles as $role)
+                        <tr class="border-b">
+                            <td class="px-6 py-3 text-left">
+                                {{ $role->id }}
+                            </td>
+                            <td class="px-6 py-3 text-left">
+                                {{ $role->name }}
+                            </td>
+                            <td class="px-6 py-3 text-left">
+                                {{ $role->permissions->pluck('name')->implode(', ') }}
+                            </td>
+                            <td class="px-6 py-3 text-left">
+                                {{ \Carbon\Carbon::parse($role->created_at)->format('d M, Y') }}
+                            </td>
+                            <td class="px-6 py-3 text-center">
+                                
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
+
+                </tbody>
+            </table>
+            <div class="my-3">
+                {{ $roles -> links() }}
+            </div>
             <div class="my-3">
             </div>
         </div>

@@ -23,7 +23,7 @@
                                 @enderror
                             </div>
 
-                            <div class="grid gid-cols-4 mb-3">
+                            <div class="grid grid-cols-4 mb-3">
                                 @if ($permissions->isNotEmpty())
                                     @foreach ($permissions as $permission)
                                     <div class="mt-3">
