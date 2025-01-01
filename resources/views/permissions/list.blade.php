@@ -37,7 +37,7 @@
                             </td>
                             <td class="px-6 py-3 text-center">
                                 <a href="{{ route("permissions.edit", $permission->id) }}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2 hover:bg-slate-600">Edit</a>
-                                <a href="javascript:void()" onclick="deletePermission({{ $permission->id }})" class="bg-red-600 text-sm text-white rounded-md px-3 py-2 hover:bg-red-500">Delete</a>
+                                <a href="javascript:void(0)" onclick="deletePermission({{ $permission->id }})" class="bg-red-600 text-sm text-white rounded-md px-3 py-2 hover:bg-red-500">Delete</a>
                             </td>
                         </tr>
                         @endforeach

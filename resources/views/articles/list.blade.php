@@ -40,7 +40,8 @@
                                 {{ \Carbon\Carbon::parse($article->created_at)->format('d M, Y') }}
                             </td>
                             <td class="px-6 py-3 text-center">
-                                
+                            <a href="{{ route('articles.edit', $article->id) }}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2 hover:bg-slate-600">Edit</a>
+                            <a href="javascript:void(0)" onclick="deleteArticle({{ $article->id }})" class="bg-red-600 text-sm text-white rounded-md px-3 py-2 hover:bg-red-500">Delete</a>
                             </td>
                         </tr>
                         @endforeach
@@ -55,16 +56,16 @@
     </div>
     <x-slot name="script">
         <script type="text/javascript">
-            function deletePermission(id) {
+            function deleteArticle(id) {
                 if(confirm("Are you sure you want to delete?")) {
                     $.ajax({
-                        url: "{{ route('permissions.destroy') }}",
+                        url: "{{ route('articles.destroy') }}",
                         type: 'DELETE',
                         data: { id: id },
                         dataType: 'json',
                         headers: { 'x-csrf-token': '{{ csrf_token() }}' },
                         success: function(response) {
-                            window.location.href = "{{ route('permissions.index') }}";
+                            window.location.href = "{{ route('articles.index') }}";
                         }
                     });
                 }
