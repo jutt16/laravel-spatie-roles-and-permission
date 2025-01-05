@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,6 +43,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
     Route::post('/articles/{id}/update', [ArticleController::class, 'update'])->name('articles.update');
     Route::delete('/articles', [ArticleController::class, 'destroy'])->name('articles.destroy');
+    
+    //users routes
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    // Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+    // Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+    // Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+    // Route::post('/articles/{id}/update', [ArticleController::class, 'update'])->name('articles.update');
+    // Route::delete('/articles', [ArticleController::class, 'destroy'])->name('articles.destroy');
 });
 
 require __DIR__.'/auth.php';
