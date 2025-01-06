@@ -48,8 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     // Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
     // Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
-    // Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-    // Route::post('/articles/{id}/update', [ArticleController::class, 'update'])->name('articles.update');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('/users/{id}/update', [UserController::class, 'update'])->name('users.update');
     // Route::delete('/articles', [ArticleController::class, 'destroy'])->name('articles.destroy');
 });
 
