@@ -4,7 +4,10 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Permissions') }}
             </h2>
-            <a href="{{ route('permissions.create') }}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2">Create</a>
+            @can('create permissions')
+                <a href="{{ route('permissions.create') }}" class="bg-slate-700 
+                text-sm text-white rounded-md px-3 py-2">Create</a>
+            @endcan
         </div>
     </x-slot>
 
@@ -36,8 +39,16 @@
                                 {{ \Carbon\Carbon::parse($permission->created_at)->format('d M, Y') }}
                             </td>
                             <td class="px-6 py-3 text-center">
-                                <a href="{{ route("permissions.edit", $permission->id) }}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2 hover:bg-slate-600">Edit</a>
-                                <a href="javascript:void(0)" onclick="deletePermission({{ $permission->id }})" class="bg-red-600 text-sm text-white rounded-md px-3 py-2 hover:bg-red-500">Delete</a>
+                                @can('edit permissions')
+                                    <a href="{{ route("permissions.edit", $permission->id) }}" class="bg-slate-700 
+                                    text-sm text-white rounded-md px-3 py-2 hover:bg-slate-600">Edit</a>
+                                @endcan
+
+                                @can('delete permissions')
+                                    <a href="javascript:void(0)" onclick="deletePermission({{ $permission->id }})" 
+                                    class="bg-red-600 text-sm text-white rounded-md px-3 py-2 
+                                    hover:bg-red-500">Delete</a>
+                                @endcan
                             </td>
                         </tr>
                         @endforeach
